@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Calculate", "Home"))
+{
+    for (int index = 1; index <= 12; ++index)
+    {
+        <div id="month@(index)">
+            Month #: @index
+            <br />
+            salary:
+            <input type="number" id="salary@(index)" name="salary@(index)" value="0" />
+            &nbsp; Tax Paid:
+            <input type="number" id="taxpaid@(index)" name="taxpaid@(index)" value="0" />
+        </div>
+    }
+
+    <div id="extra">
+        Additional income: <br />
+        bonuses:
+        <input type="number" id="salaryextra" name="salaryextra" value="0" />
+    </div>
+    <br />
+    <input type="submit" value="Go!" />
+}
+
+
+@section Scripts {
+    <script>
+        $(function() {
+            $('input[id^="salary"]').blur(function () {
+                var monthNo = this.id.substring(6);
+                monthNo++;
+                for( ; monthNo <=12; ++ monthNo)
+                {
+                    $('#salary' + monthNo).val($(this).val());
+                }
+            });
+
+            $('input[id^="taxpaid"]').blur(function () {
+                var monthNo = this.id.substring(7);
+                monthNo++;
+                for (; monthNo <= 12; ++monthNo) {
+                    $('#taxpaid' + monthNo).val($(this).val());
+                }
+            });
+        })
+    </script>
+}
