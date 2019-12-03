@@ -64,6 +64,15 @@ namespace Assignment4APITemplate.Controllers
             }
             decimal taxPerMonth = (decimal)(calculation / 12);
 
+            /*if (remainingPeriods != 0)
+            {
+                decimal TaxPerMonth = (decimal)(calculation / remainingPeriods);
+            }
+            else
+            {
+                decimal TaxPerMonth = (decimal)(calculation / 12);
+            }
+            */
             // TODO: Write your code here
             return new TaxComputation
             {
